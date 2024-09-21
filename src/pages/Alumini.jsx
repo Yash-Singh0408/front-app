@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Search, Menu, User, ChevronLeft, ChevronRight, Filter } from 'lucide-react'
+import { Search, User, ChevronLeft, ChevronRight, Filter } from 'lucide-react'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import { BaseApiUrl } from '../utils/constants'
@@ -26,7 +26,7 @@ export default function Alumini() {
 
   const fetchAlumni = async () => {
     try {
-      const response = await fetch(`${BaseApiUrl}api/auth/getusers`);
+      const response = await fetch(`${BaseApiUrl}/api/auth/getusers`);
       const data = await response.json();
   
       // Filter only alumni data

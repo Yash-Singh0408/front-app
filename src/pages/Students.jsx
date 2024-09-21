@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
-import { Search, Menu, User, ChevronLeft, ChevronRight, Filter } from 'lucide-react'
+import { Search, User, ChevronLeft, ChevronRight, Filter } from 'lucide-react'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
+import { BaseApiUrl } from '../utils/constants'
 
 const avatarColors = {
   yellow: 'bg-yellow-500',
@@ -25,7 +26,7 @@ export default function Students() {
 
   const fetchStudents = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/auth/getusers');
+      const response = await fetch(`${BaseApiUrl}/api/auth/getusers`);
       const data = await response.json();
   
       const studentData = data.filter(user => !user.isAlumni);

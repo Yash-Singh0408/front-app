@@ -3,8 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { FaLock, FaEnvelope, FaEye, FaEyeSlash } from 'react-icons/fa';
-
-const baseURL = "http://localhost:3000";
+import { BaseApiUrl } from '../utils/constants'
 
 export default function Login(){
   const [formData, setFormData] = useState({
@@ -28,7 +27,7 @@ export default function Login(){
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${baseURL}/api/auth/signin`, formData, {
+      const response = await axios.post(`${BaseApiUrl}/api/auth/signin`, formData, {
         withCredentials: true,
       });
       console.log(response.data);

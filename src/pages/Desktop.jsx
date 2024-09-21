@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { FaGraduationCap, FaBriefcase, FaCalendarAlt, FaUsers, FaUserGraduate, FaSchool, FaBars } from 'react-icons/fa';
+import {  FaCalendarAlt, FaUsers, FaUserGraduate, FaSchool, FaBars } from 'react-icons/fa';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import EventList from '../components/EventList';
@@ -14,6 +14,8 @@ import { BaseApiUrl } from '../utils/constants'
 const Desktop = () => {
   const [activeComponent, setActiveComponent] = useState('events');
   const [alumni, setAlumni] = useState([]);
+  console.log(alumni);
+  
   const [events, setEvents] = useState([]);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   
@@ -25,7 +27,7 @@ const Desktop = () => {
 
   const fetchAlumni = async () => {
     try {
-      const response = await axios.get(`${BaseApiUrl}api/auth/getusers`);
+      const response = await axios.get(`${BaseApiUrl}/api/auth/getusers`);
       const alumniList = response.data.filter(user => user.isAlumni).slice(0, 6);
       setAlumni(alumniList);
     } catch (error) {
@@ -35,7 +37,7 @@ const Desktop = () => {
 
   const fetchEvents = async () => {
     try {
-      const response = await axios.get(`${Base}api/event/events`);
+      const response = await axios.get(`${BaseApiUrl}/api/event/events`);
       setEvents(response.data.slice(0, 4));
     } catch (error) {
       console.error("Error fetching events:", error);
